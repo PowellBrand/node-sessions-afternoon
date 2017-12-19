@@ -4,7 +4,8 @@ const express = require('express')
     , checkForSession = require('./middlewares/checkForSession')
     , swag = require('./controller/swag_controller')
     , auth = require('./controller/auth_controller')
-    , cart = require('./controller/cart_controller');
+    , cart = require('./controller/cart_controller')
+    , search = require('./controller/search_controller');
 require('dotenv').config();
 
 const app = express();
@@ -30,6 +31,8 @@ app.post('/api/cart', cart.add);
 app.post('/api/cart/checkout', cart.checkout);
 app.delete('/api/cart', cart.remove);
 
+//search endpoints
+app.get('/api/search', search.search)
 
 const port = 4000;
 app.listen(port, () => {
